@@ -1,0 +1,6 @@
+name: HitAdjust
+main: com.civpvp.hitadjust.HitAdjust
+version: 1.0.0
+description: Moves the hit limiter from the defender to the attacker
+author: Squeenix
+depend: [ProtocolLib]
