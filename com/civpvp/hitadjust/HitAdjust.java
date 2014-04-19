@@ -68,7 +68,7 @@ public class HitAdjust extends JavaPlugin {
     					e.setCancelled(true);
     				}
 	    			
-	    		} catch (FieldAccessException exception){ //Should catch if the packet is the wrong type
+	    		} catch (Exception exception){ //Should catch if the packet is the wrong type
 	    			exception.printStackTrace();
 	    		}
 	    	}
