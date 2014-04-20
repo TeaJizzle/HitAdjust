@@ -1,7 +1,7 @@
 package com.civpvp.hitadjust;
 
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_7_R1.entity.CraftEntity;
@@ -21,13 +21,13 @@ import com.comphenix.protocol.reflect.FieldAccessException;
  */
 public class HitAdjust extends JavaPlugin {
 	private ProtocolManager protocolManager;
-	private HashMap<Player, Long> hitTime;
+	private ConcurrentHashMap<Player, Long> hitTime;
 	private int hitDelay = 1000; //Can't be bothered to set up a config for this shit
 
 	@Override
 	public void onEnable() {
 		registerPacketListeners();
-		hitTime = new HashMap<Player,Long>();
+		hitTime = new ConcurrentHashMap<Player,Long>();
 	}
 	
 	private void registerPacketListeners(){		
@@ -68,7 +68,7 @@ public class HitAdjust extends JavaPlugin {
     					e.setCancelled(true);
     				}
 	    			
-	    		} catch (Exception exception){ //Should catch if the packet is the wrong type
+	    		} catch (FieldAccessException exception){ //Should catch if the packet is the wrong type
 	    			exception.printStackTrace();
 	    		}
 	    	}
