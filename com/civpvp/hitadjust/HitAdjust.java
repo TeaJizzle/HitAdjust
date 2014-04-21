@@ -22,12 +22,13 @@ import com.comphenix.protocol.reflect.FieldAccessException;
 public class HitAdjust extends JavaPlugin {
 	private ProtocolManager protocolManager;
 	private ConcurrentHashMap<Player, Long> hitTime;
-	private int hitDelay = 1000; //Can't be bothered to set up a config for this shit
+	private int hitDelay = this.getConfig().getInt("hitDelay");
 
 	@Override
 	public void onEnable() {
 		registerPacketListeners();
 		hitTime = new ConcurrentHashMap<Player,Long>();
+		this.saveDefaultConfig();
 	}
 	
 	private void registerPacketListeners(){		
